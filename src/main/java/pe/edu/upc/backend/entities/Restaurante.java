@@ -1,0 +1,84 @@
+package pe.edu.upc.backend.entities;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
+@Entity
+@Table(name = "restaurantes")
+public class Restaurante {
+
+    @Id
+    @Column(name = "id_restaurantes")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuarios", nullable = false)
+    private Resena owner; // FK a usuarios
+
+    @Column(length = 100, nullable = false)
+    private String nombre;
+
+    @Column(length = 255)
+    private String direccion;
+
+    @Column(length = 100)
+    private String ciudad;
+
+    @Column(name = "aforo_mesas")
+    private Integer aforoMesas;
+
+    @Column(length = 9)
+    private String telefono;
+
+    @Column(name = "fecha_creacion")
+    private LocalDate fechaCreacion;
+
+    @Column(length = 255)
+    private String email;
+
+    // Relaciones de conveniencia (opcionales)
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resena> resenas;
+
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reserva> reservas;
+
+    public Restaurante() {}
+
+    /* Getters/Setters */
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public Resena getOwner() { return owner; }
+    public void setOwner(Resena owner) { this.owner = owner; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+
+    public String getCiudad() { return ciudad; }
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
+
+    public Integer getAforoMesas() { return aforoMesas; }
+    public void setAforoMesas(Integer aforoMesas) { this.aforoMesas = aforoMesas; }
+
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+
+    public LocalDate getFechaCreacion() { return fechaCreacion; }
+    public void setFechaCreacion(LocalDate fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public List<Resena> getResenas() { return resenas; }
+    public void setResenas(List<Resena> resenas) { this.resenas = resenas; }
+
+    public List<Reserva> getReservas() { return reservas; }
+    public void setReservas(List<Reserva> reservas) { this.reservas = reservas; }
+}
+
