@@ -2,7 +2,13 @@ package pe.edu.upc.backend.entities;
 
 import jakarta.persistence.*;
 
+santiago
 import java.time.LocalDate;
+@Entity
+@Table(name = "reservas")
+
+public class Reserva {
+main
 
 @Entity
 @Table(name = "reservas")

@@ -14,6 +14,9 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_artist")
     private Artist artist;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_restaurantes")
+    private Restaurante restaurante;
     private String punctuation;
     private String comment;
     private LocalDate reviewDate;
@@ -21,9 +24,10 @@ public class Review {
     public Review() {
     }
 
-    public Review(Long id_review, Artist artist, String punctuation, String comment, LocalDate reviewDate) {
+    public Review(Long id_review, Artist artist, Restaurante restaurante, String punctuation, String comment, LocalDate reviewDate) {
         this.id_review = id_review;
         this.artist = artist;
+        this.restaurante = restaurante;
         this.punctuation = punctuation;
         this.comment = comment;
         this.reviewDate = reviewDate;
@@ -43,6 +47,14 @@ public class Review {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 
     public String getPunctuation() {
