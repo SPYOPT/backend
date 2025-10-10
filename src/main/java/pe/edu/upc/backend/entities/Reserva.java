@@ -1,15 +1,12 @@
 package pe.edu.upc.backend.entities;
 
-public class Reserva {
-
-    package pe.edu.upc.backend.entities;
-
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
-    @Entity
-    @Table(name = "reservas")
-    public class Reserva {
+@Entity
+@Table(name = "reservas")
+
+public class Reserva {
 
         @Id
         @Column(name = "id_reservas")
