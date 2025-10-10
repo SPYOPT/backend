@@ -7,7 +7,7 @@ import pe.edu.upc.backend.entities.Restaurante;
 import java.util.List;
 
 @Repository
-public interface RestauranteRepository extends JpaRepository<Restaurante, Integer> {
+public interface RestauranteRepository extends JpaRepository<Restaurante, Long> {
 
     // Restaurantes del propietario (usuario)
     List<Restaurante> findByOwner_Id(Long idUsuario);

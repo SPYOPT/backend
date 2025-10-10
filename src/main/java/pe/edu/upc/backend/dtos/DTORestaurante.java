@@ -1,21 +1,22 @@
 package pe.edu.upc.backend.dtos;
 
 public class DTORestaurante {
-    private Integer id;
+    private Long id;
     private String nombre;
     private String direccion;
     private String ciudad;
     private Integer aforoMesas;
     private String telefono;
     private String email;
-    private String fechaCreacion;
+    private String fechaCreacion; // ISO yyyy-MM-dd
     private Long idUsuario;
 
     public DTORestaurante() {
     }
 
-    public DTORestaurante(Integer id, String nombre, String direccion, String ciudad, Integer aforoMesas,
-                          String telefono, String email, String fechaCreacion, Long idUsuario) {
+    public DTORestaurante(Long id, String nombre, String direccion, String ciudad,
+                          Integer aforoMesas, String telefono, String email,
+                          String fechaCreacion, Long idUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -27,8 +28,8 @@ public class DTORestaurante {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -54,3 +55,4 @@ public class DTORestaurante {
     public Long getIdUsuario() { return idUsuario; }
     public void setIdUsuario(Long idUsuario) { this.idUsuario = idUsuario; }
 }
+

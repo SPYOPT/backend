@@ -7,13 +7,14 @@ public interface RestauranteService {
 
     // CRUD principal (DTO in/out)
     DTORestaurante create(DTORestaurante dto);
-    DTORestaurante findByIdDTO(Integer id);
+    DTORestaurante findByIdDTO(Long id);
     List<DTORestaurante> findAllDTO();
     DTORestaurante update(DTORestaurante dto);
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
-    // Consultas adicionales (opcionales)
+    // Consultas adicionales
     List<DTORestaurante> findByOwner(Long idUsuario);
     List<DTORestaurante> searchByNombre(String nombre);
     List<DTORestaurante> findByCiudad(String ciudad);
 }
+

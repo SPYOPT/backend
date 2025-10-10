@@ -1,5 +1,6 @@
 package pe.edu.upc.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -11,11 +12,11 @@ public class Restaurante {
     @Id
     @Column(name = "id_restaurantes")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id; // recomendado Long
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuarios", nullable = false)
-    private Resena owner; // FK a usuarios
+    @JoinColumn(name = "id_usuarios", nullable = false, referencedColumnName = "id")
+    private User owner; // FK correcto a users.id
 
     @Column(length = 100, nullable = false)
     private String nombre;
@@ -38,24 +39,27 @@ public class Restaurante {
     @Column(length = 255)
     private String email;
 
-    // Relaciones de conveniencia (opcionales)
+    // Relaciones (asegúrate que en las otras entidades el campo se llame 'restaurante')
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Resena> resenas;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reserva> reservas;
+    private List<Evento> reservas;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Anuncios> anuncios;
 
     public Restaurante() {}
 
     /* Getters/Setters */
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Resena getOwner() { return owner; }
-    public void setOwner(Resena owner) { this.owner = owner; }
+    public User getOwner() { return owner; }
+    public void setOwner(User owner) { this.owner = owner; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -81,10 +85,9 @@ public class Restaurante {
     public List<Resena> getResenas() { return resenas; }
     public void setResenas(List<Resena> resenas) { this.resenas = resenas; }
 
-    public List<Reserva> getReservas() { return reservas; }
-    public void setReservas(List<Reserva> reservas) { this.reservas = reservas; }
+    public List<Evento> getReservas() { return reservas; }
+    public void setReservas(List<Evento> reservas) { this.reservas = reservas; }
 
-    public List<Anuncios> getAnuncios() {return anuncios;}
-    public void setAnuncios(List<Anuncios> anuncios) {this.anuncios = anuncios;}
+    public List<Anuncios> getAnuncios() { return anuncios; }
+    public void setAnuncios(List<Anuncios> anuncios) { this.anuncios = anuncios; }
 }
-
