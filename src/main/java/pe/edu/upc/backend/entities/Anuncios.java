@@ -32,6 +32,9 @@ public class Anuncios {
     @JoinColumn(name="id_restaurantes")
     private Restaurante restaurante;
 
+    @Column(name = "id_eventos")
+    private Long idEvento;
+
     @JsonIgnore
     @OneToMany(mappedBy = "anuncios", fetch = FetchType.EAGER)
     private List<Postulaciones> postulaciones;
@@ -68,4 +71,7 @@ public class Anuncios {
 
     public List<Postulaciones> getPostulaciones() {return postulaciones;}
     public void setPostulaciones(List<Postulaciones> postulaciones) {this.postulaciones = postulaciones;}
+
+    public Long getIdEvento() {return idEvento;}
+    public void setIdEvento(Long idEvento) {this.idEvento = idEvento;}
 }
