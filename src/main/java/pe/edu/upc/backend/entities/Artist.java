@@ -1,8 +1,10 @@
 package pe.edu.upc.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="artists")
@@ -21,6 +23,10 @@ public class Artist {
     private String phone;
     private LocalDate creation_date;
     private String email;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "artist", fetch = FetchType.EAGER)
+    private List<Postulaciones> postulaciones;//para las postulaciones
 
     public Artist() {
     }
@@ -109,6 +115,12 @@ public class Artist {
         this.email = email;
     }
 
+    public List<Postulaciones> getPostulaciones() {
+        return postulaciones;
+    }
 
+    public void setPostulaciones(List<Postulaciones> postulaciones) {
+        this.postulaciones = postulaciones;
+    }
 }
 
