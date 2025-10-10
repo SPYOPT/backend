@@ -21,6 +21,10 @@ public class Messages {
     @ManyToOne
     @JoinColumn(name = "id_usuarios")
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "id_anuncios")
+    private Anuncios anuncio;
+
     private String texto;
     private LocalDate fecha_envio;
 }

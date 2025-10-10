@@ -1,16 +1,12 @@
 package pe.edu.upc.backend.entities;
 
-public class Reserva {
-
-    package pe.edu.upc.backend.entities;
-
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
-    @Entity
-    @Table(name = "reservas")
-    public class Reserva {
-
+@Entity
+@Table(name = "reservas")
+public class Reserva {
         @Id
         @Column(name = "id_reservas")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,5 +56,3 @@ import java.time.LocalDate;
         public LocalDate getFechaCreacion() { return fechaCreacion; }
         public void setFechaCreacion(LocalDate fechaCreacion) { this.fechaCreacion = fechaCreacion; }
     }
-
-}

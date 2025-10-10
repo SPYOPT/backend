@@ -45,6 +45,9 @@ public class Restaurante {
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> reservas;
 
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Anuncios> anuncios;
+
     public Restaurante() {}
 
     /* Getters/Setters */
@@ -80,5 +83,8 @@ public class Restaurante {
 
     public List<Reserva> getReservas() { return reservas; }
     public void setReservas(List<Reserva> reservas) { this.reservas = reservas; }
+
+    public List<Anuncios> getAnuncios() {return anuncios;}
+    public void setAnuncios(List<Anuncios> anuncios) {this.anuncios = anuncios;}
 }
 
